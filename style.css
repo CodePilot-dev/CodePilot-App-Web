@@ -1,0 +1,501 @@
+:root {
+    --bg-app: #05050a;
+    --bg-sidebar: rgba(10, 10, 15, 0.8);
+    --bg-lighting: radial-gradient(circle at 50% 0%, #1e1b4b, transparent 70%);
+    --primary: #8b5cf6;
+    --primary-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    --primary-glow: rgba(139, 92, 246, 0.4);
+    --accent: #38bdf8;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --text-dim: #475569;
+    --radius: 16px;
+    --font-main: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-app);
+    background-image: var(--bg-lighting);
+    background-attachment: fixed;
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Demo Banner */
+.web-demo-banner {
+    background: var(--primary-gradient);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 100;
+}
+
+.web-demo-banner a {
+    color: white;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 280px;
+    background: var(--bg-sidebar);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    background: linear-gradient(90deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+.nav-section h3 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+}
+
+.nav-item {
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: 0.2s;
+}
+
+.nav-item.active {
+    background: rgba(139, 92, 246, 0.15);
+    color: white;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+}
+
+.download-btn-premium {
+    width: 100%;
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.icon-btn-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* content */
+.content {
+    flex: 1;
+    padding: 60px;
+    overflow-y: auto;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.header-left h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.search-box input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    border-radius: 100px;
+    width: 300px;
+    color: white;
+    outline: none;
+}
+
+.primary-btn {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 100px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 25px;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-8px);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.project-card .path {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+}
+
+.fw-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+}
+
+.fw-badge.react {
+    color: #61dafb;
+    background: rgba(97, 218, 251, 0.1);
+}
+
+.fw-badge.vue {
+    color: #42b883;
+    background: rgba(66, 184, 131, 0.1);
+}
+
+.fw-badge.node {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.tag {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: #0f172a;
+    width: 500px;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Create Project Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: white;
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.text-btn {
+    padding: 10px 20px;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Project Preview (The "App" logic) */
+.modal-content.project-preview {
+    width: 700px;
+}
+
+.project-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.detail-section h4 {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tool-btn {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.tool-btn:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--primary);
+}
+
+.scripts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.script-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+.script-item:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: #10b981;
+}
+
+.premium-notice {
+    padding: 20px;
+    background: rgba(139, 92, 246, 0.05);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px dashed rgba(139, 92, 246, 0.3);
+}
+
+.premium-notice p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.inline-download-link {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Download CTA */
+.cta-body {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.cta-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.cta-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-body p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cta-btn-main {
+    display: block;
+    background: var(--primary-gradient);
+    color: white;
+    text-decoration: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-weight: 800;
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4);
+    transition: 0.2s;
+}
+
+.cta-btn-main:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.6);
+}
+
+.small-hint {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 15px !important;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .project-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95% !important;
+    }
+}
